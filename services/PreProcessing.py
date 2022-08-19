@@ -15,7 +15,7 @@ class PreProcessing:
 
 	def __init__(self, image_path):
 		self.img_path = image_path
-		self.img = cv.imread(self.img_path, 1)
+		self.img = cv.imread(self.img_path, 0)
 		self.img_sizes = self.img.shape[:2]
 		self.img_sizes_center = (self.img_sizes[1] // 2, self.img_sizes[0] // 2)
 		self.img_processed = None
