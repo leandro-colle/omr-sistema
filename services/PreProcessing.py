@@ -1,5 +1,4 @@
-import cv2 as cv
-import numpy as np
+from config import *
 
 class PreProcessing:
 
@@ -18,7 +17,7 @@ class PreProcessing:
 		self.img = cv.imread(self.img_path, 0)
 		self.img_sizes = self.img.shape[:2]
 		self.img_sizes_center = (self.img_sizes[1] // 2, self.img_sizes[0] // 2)
-		self.img_processed = None
+		self.img_processed_path = None
 
 	def align_staff(self, blur_method, bin_method):
 		best_image = None
@@ -42,7 +41,7 @@ class PreProcessing:
 				best_image = img_transformed
 				maximum_projection = max_projection
 
-		self.__save_img(best_image)
+		self.save_img_processed(best_image)
 	
 	def __get_horizontal_projection(self, img):
 		"""
@@ -55,7 +54,7 @@ class PreProcessing:
 
 		:param img: image
 
-		:return int h_projection:
+		:return int max_h_projection:
 		"""
 
 		mask = np.uint8(np.where(img == 0, 1, 0))
@@ -76,14 +75,15 @@ class PreProcessing:
 		ret, img_bin = cv.threshold(img, 0, 255, cv.THRESH_BINARY + cv.THRESH_OTSU)
 		return img_bin
 
-	def __save_img(self, img):
+	def save_img_processed(self, img):
 		index = self.img_path.find('.png')
 		if not index:
 			index = self.img_path.find('.jpg')
 		if not index:
 			index = self.img_path.find('.jpeg')
-		img_path_processed = self.img_path[:index] + '_processed' + self.img_path[index:]
-		cv.imwrite(img_path_processed, img)
+
+		self.img_processed_path = self.img_path[:index] + '_processed' + self.img_path[index:]
+		cv.imwrite(self.img_processed_path, img)
 
 
 
