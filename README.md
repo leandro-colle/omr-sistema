@@ -4,15 +4,15 @@ Sistema OMR desenvolvido para trabalho de conclusão de curso. As ferramentas ut
 
 ## Dependências
 
-A versão do Python utilizada para o desenvolvimento do projeto foi 3.6. Instalação feita através do ambiente conda. O restante das dependências podem ser instaladas com o comando `pip install -r requirements.txt`
+A versão do Python utilizada para o desenvolvimento do projeto foi a 3.6. A instalação do ambiente pode ser feita através do gerenciador de pacotes `anaconda`. O restante das dependências podem ser instaladas com o comando `pip install -r requirements.txt`
 
 ### Modelo semântico
 
-A classificação dos símbolos musicais é feita através o modelo semântico treinado por uma rede neural. O modelo também está disponível em: https://grfia.dlsi.ua.es/primus/models/PrIMuS/Semantic-Model.zip
+A classificação dos símbolos musicais é feita através o modelo semântico treinado por rede neural. O modelo está disponível em: https://grfia.dlsi.ua.es/primus/models/PrIMuS/Semantic-Model.zip e deve ser baixado e copiado para o diretório `/data` do projeto.
 
 ### Vocabulário semântico
 
-Para conversão dos objetos classificados em significado de palavras, foi utilizado o vocabulário semântico (`Data/vocabulary_agnostic.txt`) disponível em: https://github.com/OMR-Research/tf-end-to-end, além de métodos do arquivo `ctc_utils.py` como referência.
+Para conversão dos objetos classificados em significado de palavras, foi utilizado o vocabulário semântico disponível em: https://github.com/OMR-Research/tf-end-to-end, no diretório `Data/vocabulary_agnostic.txt`. Métodos do arquivo `ctc_utils.py` também foram utilizados como referência.
 
 ## Execução do sistema
 
