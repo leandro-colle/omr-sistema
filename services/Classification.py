@@ -33,13 +33,47 @@ class Classification:
 				keep_prob: 1.0
 			}
 		)
-		str_predictions = self.sparse_tensor_to_strs(prediction)
+		str_predictions = self.__sparse_tensor_to_strs(prediction)
 
 		classified_vocabulary = []
 		for w in str_predictions[0]:
 			classified_vocabulary.append(self.vocabulary_semantic[w])
 
 		self.classified_vocabulary = classified_vocabulary
+
+	def calculate_accuracy(self):
+		with open(self.img_path.replace('_processed.png', '.semantic'), 'r') as f:
+			expected_vocabulary = f.readlines()
+
+		vocabulary_length = len(expected_vocabulary)
+
+		total_hits = 0
+		i_expected = 0
+		i_classified = 0
+
+		while i_expected < vocabulary_length:
+			i_expected += 1
+
+			try:
+				expected_word = expected_vocabulary[i_expected].rstrip()
+			except IndexError:
+				expected_word = ''
+
+			while i_classified < vocabulary_length:
+				i_classified += 1
+
+				try:
+					classified_word = self.classified_vocabulary[i_classified].rstrip()
+				except IndexError:
+					classified_word = ''
+
+				if classified_word == expected_word:
+					total_hits += 1
+
+				break
+		
+		return total_hits, i_expected
+
 
 	def __get_model_default_graph(self):
 		tf.reset_default_graph()
@@ -71,7 +105,7 @@ class Classification:
 
 		return img
 
-	def sparse_tensor_to_strs(self, sparse_tensor):
+	def __sparse_tensor_to_strs(self, sparse_tensor):
 		indexes = sparse_tensor[0][0]
 		values = sparse_tensor[0][1]
 		dense_shape = sparse_tensor[0][2]
