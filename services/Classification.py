@@ -7,7 +7,7 @@ class Classification:
 		self.img = cv.imread(self.img_path, 0)
 		self.vocabulary_semantic = self.__get_vocabulary_semantic()
 		self.sess = None
-		self.classified_vocabulary = None
+		self.classified_symbols = None
 
 	def detect_symbols(self):
 		graph = self.__get_model_default_graph()
@@ -35,11 +35,11 @@ class Classification:
 		)
 		str_predictions = self.__sparse_tensor_to_strs(prediction)
 
-		classified_vocabulary = []
+		classified_symbols = []
 		for w in str_predictions[0]:
-			classified_vocabulary.append(self.vocabulary_semantic[w])
+			classified_symbols.append(self.vocabulary_semantic[w])
 
-		self.classified_vocabulary = classified_vocabulary
+		self.classified_symbols = classified_symbols
 
 	def calculate_accuracy(self):
 		with open(self.img_path.replace('_processed.png', '.semantic'), 'r') as f:
@@ -63,7 +63,7 @@ class Classification:
 				i_classified += 1
 
 				try:
-					classified_word = self.classified_vocabulary[i_classified].rstrip()
+					classified_word = self.classified_symbols[i_classified].rstrip()
 				except IndexError:
 					classified_word = ''
 
@@ -72,7 +72,7 @@ class Classification:
 
 				break
 		
-		return total_hits, i_expected
+		return {'total': total_hits, 'expected': i_expected}
 
 
 	def __get_model_default_graph(self):

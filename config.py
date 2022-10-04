@@ -8,5 +8,6 @@ import sys
 import cv2 as cv
 import numpy as np
 import tensorflow as tf
+from midiutil import MIDIFile
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))

@@ -2,7 +2,7 @@ from config import *
 
 from services.PreProcessing import PreProcessing
 from services.Classification import Classification
-# from services.Reconstruction import Reconstruction
+from services.Reconstruction import Reconstruction
 
 def process_image(img_path, accuracy):
 
@@ -14,21 +14,27 @@ def process_image(img_path, accuracy):
 		preProcessing.BLUR_METHOD_NONE,
 		preProcessing.BIN_METHOD_OTSU
 	)
-	img_processed_path = preProcessing.img_processed_path
 
 	"""
 	Classificação dos símbolos musicais
 	"""
-	classification = Classification(img_processed_path)
+	classification = Classification(preProcessing.img_processed_path)
 	classification.detect_symbols()
-	total_hits = classification.calculate_accuracy()
+	hits = classification.calculate_accuracy()
 
-	accuracy[0] += total_hits[0]
-	accuracy[1] += total_hits[1]
+	accuracy['hits'] += hits['total']
+	accuracy['expected'] += hits['expected']
 
 	"""
 	Codificação da representação final
 	"""
+	if hits['total'] / hits['expected'] == 1:
+		reconstruction = Reconstruction(
+			preProcessing.img_processed_path,
+			classification.classified_symbols
+		)
+		reconstruction.convert_to_midi()
+
 
 def get_directory_images(image_dir):
 	classification_images = []
@@ -42,22 +48,20 @@ def get_directory_images(image_dir):
 
 def main():
 
-	if len(sys.argv) <= 1:
+	try:
+		image_dir = sys.argv[1]
+	except IndexError:
 		print('Informe o diretório das imagens.')
-		exit()
-
-	image_dir = sys.argv[1]
+		exit()	
 
 	classification_images = get_directory_images(image_dir)
 
-	total_accuracy = 0
-	expected_accuracy = 0
-	accuracy = [total_accuracy, expected_accuracy]
+	accuracy = {'hits': 0, 'expected': 0}
 	for image_name in classification_images:
 		process_image(image_dir + '/' + image_name, accuracy)
 
-	result_accuracy = round((accuracy[0] / accuracy[1]) * 100, 2)
-	print(result_accuracy)
+	total_accuracy = round((accuracy['hits'] / accuracy['expected']) * 100, 2)
+	print(total_accuracy)
 
 if __name__ == "__main__":
 	main()
