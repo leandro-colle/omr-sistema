@@ -87,7 +87,8 @@ class Reconstruction:
 			'timeSignature-3/4': [3, 4],
 			'timeSignature-4/4': [4, 4],
 			'timeSignature-6/4': [6, 4],
-			'timeSignature-6/8': [6, 8]
+			'timeSignature-6/8': [6, 8],
+			'timeSignature-C': [4, 4]
 		}
 
 		PITCHS = {
