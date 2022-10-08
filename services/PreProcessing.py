@@ -9,6 +9,9 @@ class PreProcessing:
 	BIN_METHOD_GLOBAL = 1
 	BIN_METHOD_OTSU = 2
 
+	MORPHOLOGICAL_METHODS_NONE = 0
+	MORPHOLOGICAL_METHODS_EROSION_DILATION = 1
+
 	DEGREES_LIMIT = 15
 	DEGREES_STEP = 0.25
 
@@ -19,7 +22,7 @@ class PreProcessing:
 		self.img_sizes_center = (self.img_sizes[1] // 2, self.img_sizes[0] // 2)
 		self.img_processed_path = None
 
-	def align_staff(self, blur_method, bin_method):
+	def align_staff(self, blur_method, bin_method, morphological_methods):
 		best_image = None
 		maximum_projection = 0
 		rotation_scale = 1
@@ -35,6 +38,9 @@ class PreProcessing:
 				img_transformed = self.__apply_global_binarization(img_transformed)
 			elif bin_method == self.BIN_METHOD_OTSU:
 				img_transformed = self.__apply_otsu_binarization(img_transformed)
+
+			if morphological_methods == self.MORPHOLOGICAL_METHODS_EROSION_DILATION:
+				img_transformed = self.__apply_morphological_operations(img_transformed)
 
 			max_projection = self.__get_horizontal_projection(img_transformed)
 			if max_projection > maximum_projection:
@@ -75,6 +81,21 @@ class PreProcessing:
 		ret, img_bin = cv.threshold(img, 0, 255, cv.THRESH_BINARY + cv.THRESH_OTSU)
 		return img_bin
 
+	def __apply_morphological_operations(self, img):
+		img_transformed = cv.adaptiveThreshold(
+			img,
+			255,
+			cv.ADAPTIVE_THRESH_GAUSSIAN_C,
+			cv.THRESH_BINARY,
+			11,
+			2
+		)
+		kernel = np.ones((3,3), np.uint8) 
+		img_transformed = cv.erode(img_transformed, kernel, iterations=1) 
+		img_transformed = cv.dilate(img_transformed, kernel, iterations=1)
+		img_transformed = cv.addWeighted(img_transformed, 0, img, 1, 0)
+		return img_transformed
+
 	def save_img_processed(self, img):
 		index = self.img_path.find('.png')
 		if not index:
@@ -84,11 +105,3 @@ class PreProcessing:
 
 		self.img_processed_path = self.img_path[:index] + '_processed' + self.img_path[index:]
 		cv.imwrite(self.img_processed_path, img)
-
-
-
-# img_filt = cv.adaptiveThreshold(img,255,cv.ADAPTIVE_THRESH_GAUSSIAN_C,\
-#             cv.THRESH_BINARY,11,2)
-# kernel = np.ones((5,5), np.uint8) 
-# img_filt = cv.erode(img_filt, kernel, iterations=1) 
-# img_filt = cv.dilate(img_filt, kernel, iterations=1)
