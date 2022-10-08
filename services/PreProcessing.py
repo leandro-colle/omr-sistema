@@ -9,8 +9,8 @@ class PreProcessing:
 	BIN_METHOD_GLOBAL = 1
 	BIN_METHOD_OTSU = 2
 
-	MORPHOLOGICAL_METHODS_NONE = 0
-	MORPHOLOGICAL_METHODS_EROSION_DILATION = 1
+	MORPH_METHODS_NONE = 0
+	MORPH_METHODS_EROSION_DILATION = 1
 
 	DEGREES_LIMIT = 15
 	DEGREES_STEP = 0.25
@@ -39,7 +39,7 @@ class PreProcessing:
 			elif bin_method == self.BIN_METHOD_OTSU:
 				img_transformed = self.__apply_otsu_binarization(img_transformed)
 
-			if morphological_methods == self.MORPHOLOGICAL_METHODS_EROSION_DILATION:
+			if morphological_methods == self.MORPH_METHODS_EROSION_DILATION:
 				img_transformed = self.__apply_morphological_operations(img_transformed)
 
 			max_projection = self.__get_horizontal_projection(img_transformed)
@@ -82,16 +82,8 @@ class PreProcessing:
 		return img_bin
 
 	def __apply_morphological_operations(self, img):
-		img_transformed = cv.adaptiveThreshold(
-			img,
-			255,
-			cv.ADAPTIVE_THRESH_GAUSSIAN_C,
-			cv.THRESH_BINARY,
-			11,
-			2
-		)
-		kernel = np.ones((3,3), np.uint8) 
-		img_transformed = cv.erode(img_transformed, kernel, iterations=1) 
+		kernel = np.ones((3, 3), np.uint8)
+		img_transformed = cv.erode(img, kernel, iterations=1)
 		img_transformed = cv.dilate(img_transformed, kernel, iterations=1)
 		img_transformed = cv.addWeighted(img_transformed, 0, img, 1, 0)
 		return img_transformed
