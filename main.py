@@ -11,9 +11,9 @@ def process_image(img_path, accuracy):
 	"""
 	preProcessing = PreProcessing(img_path)
 	preProcessing.align_staff(
-		preProcessing.BLUR_METHOD_NONE,
 		preProcessing.BIN_METHOD_OTSU,
-		preProcessing.MORPH_METHODS_NONE
+		preProcessing.BLUR_METHOD_GAUSS,
+		preProcessing.MORPH_METHODS_EROSION_DILATION
 	)
 
 	"""
