@@ -1,2 +1,2 @@
-{"expected_word": "note-B4_quarter", "classified_word": "note-B4_eighth"}
-{"expected_word": "note-G4_quarter", "classified_word": "note-G4_eighth"}
+{"position": 5, "expected_word": "note-B4_quarter", "classified_word": "note-B4_eighth"}
+{"position": 6, "expected_word": "note-G4_quarter", "classified_word": "note-G4_eighth"}

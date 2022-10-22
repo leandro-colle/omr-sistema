@@ -1,4 +1,4 @@
-{"expected_word": "timeSignature-4/4", "classified_word": "timeSignature-4/2"}
-{"expected_word": "note-G4_eighth.", "classified_word": "note-G4_sixteenth"}
-{"expected_word": "note-G4_half.", "classified_word": "note-G4_whole"}
-{"expected_word": "note-E4_eighth.", "classified_word": "note-E4_eighth"}
+{"position": 2, "expected_word": "timeSignature-4/4", "classified_word": "timeSignature-4/2"}
+{"position": 4, "expected_word": "note-G4_eighth.", "classified_word": "note-G4_sixteenth"}
+{"position": 7, "expected_word": "note-G4_half.", "classified_word": "note-G4_whole"}
+{"position": 8, "expected_word": "note-E4_eighth.", "classified_word": "note-E4_eighth"}

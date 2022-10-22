@@ -1,4 +1,4 @@
-{"expected_word": "note-C3_eighth", "classified_word": "note-C3_sixteenth"}
-{"expected_word": "note-D3_eighth", "classified_word": "note-D3_sixteenth"}
-{"expected_word": "note-B2_quarter", "classified_word": "note-B2_eighth"}
-{"expected_word": "note-G3_half", "classified_word": "note-G3_quarter"}
+{"position": 7, "expected_word": "note-C3_eighth", "classified_word": "note-C3_sixteenth"}
+{"position": 8, "expected_word": "note-D3_eighth", "classified_word": "note-D3_sixteenth"}
+{"position": 10, "expected_word": "note-B2_quarter", "classified_word": "note-B2_eighth"}
+{"position": 14, "expected_word": "note-G3_half", "classified_word": "note-G3_quarter"}

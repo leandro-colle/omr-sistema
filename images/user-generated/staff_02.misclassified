@@ -1,2 +1,2 @@
-{"expected_word": "note-G4_sixteenth.", "classified_word": "note-G4_sixteenth"}
-{"expected_word": "rest-thirty_second", "classified_word": "rest-sixteenth"}
+{"position": 5, "expected_word": "note-G4_sixteenth.", "classified_word": "note-G4_sixteenth"}
+{"position": 6, "expected_word": "rest-thirty_second", "classified_word": "rest-sixteenth"}

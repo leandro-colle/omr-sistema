@@ -1,6 +1,6 @@
-{"expected_word": "timeSignature-3/4", "classified_word": "timeSignature-2/4"}
-{"expected_word": "rest-eighth", "classified_word": "note-E3_eighth"}
-{"expected_word": "rest-sixteenth", "classified_word": "note-E3_sixteenth"}
-{"expected_word": "rest-sixteenth", "classified_word": "note-E3_sixteenth"}
-{"expected_word": "rest-sixteenth", "classified_word": "note-E3_sixteenth"}
-{"expected_word": "rest-sixteenth", "classified_word": "note-E3_sixteenth"}
+{"position": 2, "expected_word": "timeSignature-3/4", "classified_word": "timeSignature-2/4"}
+{"position": 6, "expected_word": "rest-eighth", "classified_word": "note-E3_eighth"}
+{"position": 8, "expected_word": "rest-sixteenth", "classified_word": "note-E3_sixteenth"}
+{"position": 9, "expected_word": "rest-sixteenth", "classified_word": "note-E3_sixteenth"}
+{"position": 10, "expected_word": "rest-sixteenth", "classified_word": "note-E3_sixteenth"}
+{"position": 11, "expected_word": "rest-sixteenth", "classified_word": "note-E3_sixteenth"}

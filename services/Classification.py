@@ -72,6 +72,7 @@ class Classification:
 					total_hits += 1
 				else:
 					misclassified_symbols.append({
+						'position': i_expected,
 						'expected_word': expected_word,
 						'classified_word': classified_word
 					})
@@ -151,7 +152,7 @@ class Classification:
 
 	def __save_misclassified_file(self, misclassified_symbols):
 		misclassified_file_name = self.img_path.replace('_processed.png', '.misclassified')
-		misclassified_file = open(misclassified_file_name, 'w+')
+		misclassified_file = open(misclassified_file_name, 'w')
 		for symbols in misclassified_symbols:
 			misclassified_file.write(json.dumps(symbols) + "\n")
 		misclassified_file.close()
