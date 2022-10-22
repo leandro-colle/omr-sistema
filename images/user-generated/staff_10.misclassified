@@ -1,4 +1,1 @@
 {"position": 2, "expected_word": "timeSignature-6/8", "classified_word": "timeSignature-2/2"}
-{"position": 3, "expected_word": "note-B4_half.", "classified_word": "note-B4_quarter."}
-{"position": 6, "expected_word": "note-B4_half", "classified_word": "note-B4_quarter"}
-{"position": 21, "expected_word": "note-B4_eighth", "classified_word": "note-B4_sixteenth"}

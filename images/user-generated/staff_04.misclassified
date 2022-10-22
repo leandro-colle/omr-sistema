@@ -1,4 +1,13 @@
-{"position": 2, "expected_word": "timeSignature-4/4", "classified_word": "timeSignature-4/2"}
-{"position": 4, "expected_word": "note-G4_eighth.", "classified_word": "note-G4_sixteenth"}
-{"position": 7, "expected_word": "note-G4_half.", "classified_word": "note-G4_whole"}
-{"position": 8, "expected_word": "note-E4_eighth.", "classified_word": "note-E4_eighth"}
+{"position": 9, "expected_word": "rest-sixteenth", "classified_word": "barline"}
+{"position": 10, "expected_word": "barline", "classified_word": "note-B4_quarter"}
+{"position": 11, "expected_word": "note-B4_quarter", "classified_word": "note-B4_eighth"}
+{"position": 12, "expected_word": "note-B4_eighth", "classified_word": "note-C5_eighth"}
+{"position": 13, "expected_word": "note-C5_eighth", "classified_word": "note-A4_eighth"}
+{"position": 14, "expected_word": "note-A4_eighth", "classified_word": "note-B4_eighth"}
+{"position": 15, "expected_word": "note-B4_eighth", "classified_word": "note-G4_quarter"}
+{"position": 16, "expected_word": "note-G4_quarter", "classified_word": "barline"}
+{"position": 17, "expected_word": "barline", "classified_word": "note-F4_half"}
+{"position": 18, "expected_word": "note-F4_half", "classified_word": "note-A4_quarter"}
+{"position": 19, "expected_word": "note-A4_quarter", "classified_word": "note-A4_eighth."}
+{"position": 20, "expected_word": "note-A4_eighth.", "classified_word": "rest-sixteenth"}
+{"position": 21, "expected_word": "rest-sixteenth", "classified_word": ""}

@@ -13,7 +13,7 @@ def process_image(img_path, accuracy):
 	preProcessing.align_staff(
 		preProcessing.BIN_METHOD_OTSU,
 		preProcessing.BLUR_METHOD_GAUSS,
-		preProcessing.MORPH_METHODS_EROSION_DILATION
+		preProcessing.MORPH_METHODS_NONE
 	)
 
 	"""

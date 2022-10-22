@@ -1,4 +1,3 @@
-{"position": 3, "expected_word": "note-G3_quarter", "classified_word": "note-G3_eighth"}
 {"position": 5, "expected_word": "note-E3_quarter", "classified_word": "note-E3_eighth"}
 {"position": 6, "expected_word": "note-D3_eighth", "classified_word": "note-D3_sixteenth"}
 {"position": 13, "expected_word": "note-B2_quarter", "classified_word": "note-B2_eighth"}

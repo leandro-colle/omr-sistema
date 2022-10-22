@@ -1,9 +1,7 @@
+{"position": 3, "expected_word": "note-A3_eighth", "classified_word": "note-C4_eighth."}
+{"position": 4, "expected_word": "note-F3_eighth", "classified_word": "note-F3_quarter"}
 {"position": 5, "expected_word": "note-E3_eighth", "classified_word": "note-E3_quarter"}
-{"position": 6, "expected_word": "note-D3_eighth", "classified_word": "note-D3_sixteenth"}
-{"position": 7, "expected_word": "note-C3_eighth", "classified_word": "note-D3_quarter"}
-{"position": 8, "expected_word": "note-B2_eighth", "classified_word": "note-C3_eighth"}
-{"position": 9, "expected_word": "note-A2_eighth", "classified_word": "note-B2_quarter"}
-{"position": 10, "expected_word": "note-G2_eighth", "classified_word": "note-A2_quarter"}
-{"position": 11, "expected_word": "barline", "classified_word": "note-G2_eighth"}
-{"position": 12, "expected_word": "note-A3_half", "classified_word": "barline"}
-{"position": 13, "expected_word": "note-C3_half", "classified_word": "note-A3_whole"}
+{"position": 6, "expected_word": "note-D3_eighth", "classified_word": "note-D3_quarter"}
+{"position": 8, "expected_word": "note-B2_eighth", "classified_word": "note-B2_quarter"}
+{"position": 9, "expected_word": "note-A2_eighth", "classified_word": "note-A2_quarter"}
+{"position": 12, "expected_word": "note-A3_half", "classified_word": "note-A3_whole"}
