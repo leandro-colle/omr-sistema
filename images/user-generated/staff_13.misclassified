@@ -1,0 +1,6 @@
+{"expected_word": "timeSignature-3/4", "classified_word": "timeSignature-2/4"}
+{"expected_word": "rest-eighth", "classified_word": "note-E3_eighth"}
+{"expected_word": "rest-sixteenth", "classified_word": "note-E3_sixteenth"}
+{"expected_word": "rest-sixteenth", "classified_word": "note-E3_sixteenth"}
+{"expected_word": "rest-sixteenth", "classified_word": "note-E3_sixteenth"}
+{"expected_word": "rest-sixteenth", "classified_word": "note-E3_sixteenth"}

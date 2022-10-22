@@ -42,7 +42,7 @@ def get_directory_images(image_dir):
 
 	all_file_names = os.listdir(image_dir)
 	for file in all_file_names:
-		if '_processed' not in file and '.semantic' not in file:
+		if '_processed.png' not in file and '.png' in file:
 			classification_images.append(file)
 	
 	return classification_images
@@ -53,7 +53,7 @@ def main():
 		image_dir = sys.argv[1]
 	except IndexError:
 		print('Informe o diretório das imagens.')
-		exit()	
+		exit()
 
 	classification_images = get_directory_images(image_dir)
 

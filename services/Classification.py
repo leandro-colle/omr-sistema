@@ -50,12 +50,13 @@ class Classification:
 		total_hits = 0
 		i_expected = 0
 		i_classified = 0
+		misclassified_symbols = []
 
 		while i_expected < vocabulary_length:
 			i_expected += 1
 
 			try:
-				expected_word = expected_vocabulary[i_expected].rstrip()
+				expected_word = expected_vocabulary[i_expected-1].rstrip()
 			except IndexError:
 				expected_word = ''
 
@@ -63,16 +64,24 @@ class Classification:
 				i_classified += 1
 
 				try:
-					classified_word = self.classified_symbols[i_classified].rstrip()
+					classified_word = self.classified_symbols[i_classified-1].rstrip()
 				except IndexError:
 					classified_word = ''
 
 				if classified_word == expected_word:
 					total_hits += 1
+				else:
+					misclassified_symbols.append({
+						'expected_word': expected_word,
+						'classified_word': classified_word
+					})
 
 				break
-		
-		return {'total': total_hits, 'expected': i_expected}
+
+		if len(misclassified_symbols) > 0:
+			self.__save_misclassified_file(misclassified_symbols)
+
+		return {'total': total_hits, 'expected': vocabulary_length}
 
 
 	def __get_model_default_graph(self):
@@ -139,3 +148,10 @@ class Classification:
 
 		vocabulary_semantic_file.close()
 		return word_list
+
+	def __save_misclassified_file(self, misclassified_symbols):
+		misclassified_file_name = self.img_path.replace('_processed.png', '.misclassified')
+		misclassified_file = open(misclassified_file_name, 'w+')
+		for symbols in misclassified_symbols:
+			misclassified_file.write(json.dumps(symbols) + "\n")
+		misclassified_file.close()

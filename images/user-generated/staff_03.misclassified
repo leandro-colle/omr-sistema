@@ -1,0 +1,3 @@
+{"expected_word": "rest-eighth", "classified_word": "rest-quarter"}
+{"expected_word": "rest-quarter", "classified_word": "note-B4_half"}
+{"expected_word": "note-B4_half", "classified_word": ""}
