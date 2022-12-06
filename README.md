@@ -14,6 +14,21 @@ A classificação dos símbolos musicais é feita através o modelo semântico t
 
 Para conversão dos objetos classificados em significado de palavras, foi utilizado o vocabulário semântico disponível em: https://github.com/OMR-Research/tf-end-to-end, no diretório `Data/vocabulary_agnostic.txt`. Métodos do arquivo `ctc_utils.py` também foram utilizados como referência.
 
+## Imagens
+
+As imagens utilizadas estão no diretório `/images`. Nesse diretório existem 2 tipos de imagens utilizadas. O diretório `primus-dataset` armazena as imagens extraídas do repositório de imagens PRIMUS (https://grfia.dlsi.ua.es/primus/). O diretório `user-generate` possui as imagens próprias geradas através do software Noteflight.
+
+Para gerar um novo dataset, é preciso que existam os seguintes arquivos dentro do `/images/<nome_dataset>`:
+
+1 - Imagem de pauta (`.png`)
+2 - Arquivo semântico (`.semantic`) seguindo as regras do vocabulário de palavras
+
+Ao executar o sistema, serão gerados os seguintes arquivos:
+
+1 - Imagem pré-processada (`_processed.png`)
+2 - Erros de classificação (`.misclassified`), caso houver
+3 - Arquivo de audio (`.mid`) caso a etapa de classificação atinja 100% na classificação da pauta
+
 ## Execução do sistema
 
-`python3 main.py`
+`python3 main.py <diretorio_dataset>`
