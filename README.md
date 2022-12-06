@@ -20,14 +20,14 @@ As imagens utilizadas estão no diretório `/images`. Nesse diretório existem 2
 
 Para gerar um novo dataset, é preciso que existam os seguintes arquivos dentro do `/images/<nome_dataset>`:
 
-1 - Imagem de pauta (`.png`)
-2 - Arquivo semântico (`.semantic`) seguindo as regras do vocabulário de palavras
+- Imagem de pauta (`.png`)
+- Arquivo semântico (`.semantic`), seguindo as regras do vocabulário de palavras
 
 Ao executar o sistema, serão gerados os seguintes arquivos:
 
-1 - Imagem pré-processada (`_processed.png`)
-2 - Erros de classificação (`.misclassified`), caso houver
-3 - Arquivo de audio (`.mid`) caso a etapa de classificação atinja 100% na classificação da pauta
+- Imagem pré-processada (`_processed.png`)
+- Erros de classificação (`.misclassified`), caso houver
+- Arquivo de audio (`.mid`), caso a etapa de classificação atinja 100% na classificação da pauta
 
 ## Execução do sistema
 
