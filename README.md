@@ -1,7 +1,7 @@
 # Sistema de Reconhecimento Óptico de Partituras (OMR)
 
 ![Python](https://img.shields.io/badge/python-3.6-blue)
-![License](https://img.shields.io/badge/license-NONE-lightgrey)
+![License](https://img.shields.io/badge/license-mit-lightgrey)
 
 > **Transforme partituras em áudio MIDI automaticamente usando visão computacional e redes neurais.**
 
