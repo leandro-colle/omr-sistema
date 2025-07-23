@@ -1,34 +1,109 @@
-# Sistema de reconhecimento óptico de partituras
+# Sistema de Reconhecimento Óptico de Partituras (OMR)
 
-Sistema OMR desenvolvido para trabalho de conclusão de curso. As ferramentas utilizadas foram Opencv, Tensorflow e MIDIUtil.
+![Python](https://img.shields.io/badge/python-3.6-blue)
+![License](https://img.shields.io/badge/license-NONE-lightgrey)
 
-## Dependências
+> **Transforme partituras em áudio MIDI automaticamente usando visão computacional e redes neurais.**
 
-A versão do Python utilizada para o desenvolvimento do projeto foi a 3.6. A instalação do ambiente pode ser feita através do gerenciador de pacotes `anaconda`. O restante das dependências podem ser instaladas com o comando `pip install -r requirements.txt`
+O **Sistema de Reconhecimento Óptico de Partituras (OMR)** é uma solução desenvolvida para converter imagens de partituras musicais em arquivos de áudio MIDI, utilizando técnicas avançadas de visão computacional (OpenCV), redes neurais (TensorFlow) e manipulação MIDI (MIDIUtil). O projeto foi concebido como Trabalho de Conclusão de Curso, mas é ideal para músicos, pesquisadores e desenvolvedores interessados em digitalização e análise musical.
 
-### Modelo semântico
+---
 
-A classificação dos símbolos musicais é feita através o modelo semântico treinado por rede neural. O modelo está disponível em: https://grfia.dlsi.ua.es/primus/models/PrIMuS/Semantic-Model.zip e deve ser baixado e copiado para o diretório `/data` do projeto.
+## Tabela de Conteúdos
+- [Instalação e Dependências](#instalação-e-dependências)
+- [Imagens e Datasets](#imagens-e-datasets)
+- [Execução do Sistema](#execução-do-sistema)
+- [Arquivos Gerados](#arquivos-gerados)
+- [Como Contribuir](#como-contribuir)
+- [Licença](#licença)
+- [Contato](#contato)
 
-### Vocabulário semântico
+---
 
-Para conversão dos objetos classificados em significado de palavras, foi utilizado o vocabulário semântico disponível em: https://github.com/OMR-Research/tf-end-to-end, no diretório `Data/vocabulary_agnostic.txt`. Métodos do arquivo `ctc_utils.py` também foram utilizados como referência.
+## Instalação e Dependências
 
-## Imagens
+### Pré-requisitos
+- Python 3.6 (recomenda-se uso de ambiente virtual ou Anaconda)
+- Git
 
-As imagens utilizadas estão no diretório `/images`. Nesse diretório existem 2 tipos de imagens utilizadas. O diretório `primus-dataset` armazena as imagens extraídas do repositório de imagens PRIMUS (https://grfia.dlsi.ua.es/primus/). O diretório `user-generate` possui as imagens próprias geradas através do software Noteflight.
+### Instalação
 
-Para gerar um novo dataset, é preciso que existam os seguintes arquivos dentro do `/images/<nome_dataset>`:
+Clone o repositório e instale as dependências:
 
+```bash
+git clone git@github.com:leandro-colle/omr-sistema.git
+cd omr-sistema
+pip install -r requirements.txt
+```
+
+Principais dependências:
+- OpenCV
+- TensorFlow 1.1
+- numpy
+- protobuf
+- MIDIUtil
+
+### Modelos e Vocabulário
+
+- Baixe o modelo semântico treinado: [Semantic-Model.zip](https://grfia.dlsi.ua.es/primus/models/PrIMuS/Semantic-Model.zip) e extraia em `data/`.
+- Baixe o vocabulário semântico: [vocabulary_agnostic.txt](https://github.com/OMR-Research/tf-end-to-end/blob/master/Data/vocabulary_agnostic.txt) e coloque em `data/` como `vocabulary_semantic.txt`.
+
+---
+
+## Imagens e Datasets
+
+O sistema trabalha com imagens de partituras localizadas no diretório `/images`, organizadas em dois conjuntos principais:
+- **primus-dataset**: imagens extraídas do repositório PRIMUS ([link](https://grfia.dlsi.ua.es/primus/)).
+- **user-generated**: imagens criadas pelo usuário, por exemplo, via software Noteflight.
+
+Para criar um novo dataset, inclua em `/images/<nome_dataset>`:
 - Imagem de pauta (`.png`)
-- Arquivo semântico (`.semantic`), seguindo as regras do vocabulário de palavras
+- Arquivo semântico (`.semantic`), seguindo o vocabulário de palavras adotado.
 
-Ao executar o sistema, serão gerados os seguintes arquivos:
+---
 
-- Imagem pré-processada (`_processed.png`)
-- Erros de classificação (`.misclassified`), caso houver
-- Arquivo de audio (`.mid`), caso a etapa de classificação atinja 100% na classificação da pauta
+## Execução do Sistema
 
-## Execução do sistema
+Execute o sistema informando o diretório do dataset de imagens:
 
-`python3 main.py <diretorio_dataset>`
+```bash
+python3 main.py <diretorio_dataset>
+```
+
+Exemplo:
+```bash
+python3 main.py images/primus-dataset
+```
+
+Caso o diretório não seja informado, o sistema solicitará o caminho.
+
+---
+
+## Arquivos Gerados
+
+Durante a execução, o sistema gera automaticamente:
+- **Imagem pré-processada** (`_processed.png`): resultado do alinhamento e binarização da pauta.
+- **Arquivo de erros de classificação** (`.misclassified`): lista de símbolos classificados incorretamente, se houver.
+- **Arquivo de áudio MIDI** (`.mid`): gerado quando a classificação da pauta atinge 100% de acerto.
+
+Os arquivos de saída são salvos em `outputs/` e/ou no diretório das imagens processadas.
+
+---
+
+## Como Contribuir
+
+Contribuições são muito bem-vindas! Para colaborar:
+
+1. Faça um fork do projeto
+2. Crie uma branch descritiva (`git checkout -b feature/nome-da-feature`)
+3. Realize seus commits de forma clara e objetiva (`git commit -am 'Descrição da alteração'`)
+4. Envie para seu fork (`git push origin feature/nome-da-feature`)
+5. Abra um Pull Request detalhando sua contribuição
+
+Sugestões, correções e novas ideias são sempre incentivadas. Sinta-se à vontade para abrir issues para discussões ou dúvidas.
+
+---
+
+## Licença
+
+Este projeto está licenciado sob os termos descritos no arquivo [LICENSE](./LICENSE) presente neste repositório.
